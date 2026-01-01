@@ -1,0 +1,304 @@
+:root {
+  color-scheme: dark light;
+  --bg: #0b0c10;
+  --bg-panel: rgba(18, 20, 28, 0.82);
+  --bg-panel-alt: rgba(24, 27, 38, 0.9);
+  --border: rgba(255, 255, 255, 0.08);
+  --text-primary: #f7f7f8;
+  --text-muted: rgba(247, 247, 248, 0.66);
+  --accent: #facc15;
+  --accent-soft: rgba(250, 204, 21, 0.12);
+  --positive: #34d399;
+  --negative: #f87171;
+  --card-radius: 18px;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, rgba(250, 204, 21, 0.04), transparent 40%),
+    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.05), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(236, 72, 153, 0.04), transparent 55%),
+    var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+main {
+  padding: 64px 24px 96px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 32px 16px 64px;
+  }
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: clamp(32px, 4vw, 46px);
+  letter-spacing: -1.2px;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+section + section {
+  margin-top: 32px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 20px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(250, 204, 21, 0.45);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.28);
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid rgba(250, 204, 21, 0.36);
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.tag {
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  padding: 4px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+code, pre {
+  font-family: "Fira Code", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+pre {
+  margin: 18px 0 0;
+  max-height: 340px;
+  overflow: auto;
+  background: var(--bg-panel-alt);
+  border-radius: 14px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  line-height: 1.55;
+}
+
+.scroll-fade {
+  position: relative;
+}
+
+.scroll-fade::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(11, 12, 16, 0), rgba(11, 12, 16, 0.95));
+  pointer-events: none;
+}
+
+.tournament-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.scoreboard {
+  margin-top: 24px;
+  border-radius: var(--card-radius);
+  border: 1px solid var(--border);
+  background: var(--bg-panel);
+  overflow: hidden;
+}
+
+.scoreboard table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.scoreboard th,
+.scoreboard td {
+  padding: 16px 20px;
+  text-align: left;
+}
+
+.scoreboard tbody tr + tr td {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.scoreboard tbody tr:hover {
+  background: rgba(250, 204, 21, 0.06);
+}
+
+.scoreboard .rank {
+  font-weight: 700;
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(52, 211, 153, 0.14);
+  color: var(--positive);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.badge.muted {
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.8);
+  border-color: transparent;
+}
+
+section h2 {
+  margin: 0 0 12px;
+  font-size: clamp(24px, 3vw, 28px);
+}
+
+.section-intro {
+  color: var(--text-muted);
+  max-width: 720px;
+}
+
+.prompt-block {
+  margin-top: 18px;
+  background: var(--bg-panel-alt);
+  border-radius: var(--card-radius);
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: pre-wrap;
+  line-height: 1.55;
+}
+
+.inline-list {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.inline-list span + span::before {
+  content: "·";
+  margin-right: 6px;
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.metric strong {
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+.metric.positive strong {
+  color: var(--positive);
+}
+
+.metric.negative strong {
+  color: var(--negative);
+}
+
+.generation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.generation-subtitle {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.model-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.12);
+  color: rgba(191, 219, 254, 0.88);
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.model-chip.anthropic {
+  background: rgba(241, 171, 255, 0.12);
+  color: rgba(255, 222, 255, 0.88);
+}
+
+.model-chip.openai {
+  background: rgba(110, 231, 183, 0.12);
+  color: rgba(209, 250, 229, 0.88);
+}
+
+.model-chip.zhipu {
+  background: rgba(252, 211, 77, 0.12);
+  color: rgba(254, 240, 138, 0.88);
+}
+
+@media (max-width: 640px) {
+  .generation-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
